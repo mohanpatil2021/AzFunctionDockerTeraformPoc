@@ -81,7 +81,7 @@ jobs:
     - name: Set registry in container app
       run: |
         az containerapp registry set \
-          --name mycontainerapp \
+          --name ${{ env.CONTAINER_APP }} \
           --resource-group TerraformPoc-App \
           --server acrpocterraform.azurecr.io \
           --identity $(az identity show --name container-app-identity --resource-group TerraformPoc-App --query id -o tsv)

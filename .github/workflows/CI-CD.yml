@@ -63,7 +63,7 @@ jobs:
       if: ((success()) && (github.event_name != 'pull_request'))
       working-directory: ${{ env.dockerProjectDirectory }}
       run: |
-        docker build -t ${{ inputs.imageName }} -f ${{ inputs.dockerfile }} .
+        docker build -t ${{ env.imageName }} -f ${{ env.dockerfile }} .
       shell: pwsh
     #- name: Build the Docker image
      # run: docker build -t ${{ env.CONTAINER_IMAGE }} -f Dockerfile .

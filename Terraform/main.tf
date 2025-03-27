@@ -19,10 +19,10 @@ terraform {
 provider "azurerm" {
   features {}
 
-  client_id = ${{ vars.ARM_CLIENT_ID }}
-  client_secret = ${{ vars.ARM_CLIENT_SECRET }}
-  tenant_id = ${{ vars.ARM_TENANT_ID }}
-  subscription_id = ${{ vars.ARM_SUBSCRIPTION_ID }}
+  client_id = "5e3179ac-9f5d-4eec-838e-f8610ccf867b"
+  client_secret = "tYD8Q~nc5qquKno~vha9XdiS7xyaJLJcI1W_8cR5"
+  tenant_id = "8ac76c91-e7f1-41ff-a89c-3553b2da2c17"
+  subscription_id = "8b669b78-d48a-4709-bb88-e8a37a2e6b52"
 }
 
 data "azurerm_client_config" "current" {}

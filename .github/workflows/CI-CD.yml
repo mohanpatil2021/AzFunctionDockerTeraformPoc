@@ -21,6 +21,14 @@ env:
   CONTAINER_REGISTRY_NAME: "acrpocterraform"
   CONTAINER_APP: "myazfunccontainerapp"
   CONTAINERAPP_RESOURCEGROUP: "TerraformPoc-App"
+  #sonarProjectKey: 'WK.TAA.SE.CapegoWeb.Migration.Job'
+  csProject: ${{ github.workspace }}/AzFunctionDockerTeraformPoc/AzFunctionDockerTeraformPoc.csproj
+  #testProject: ${{ github.workspace }}/Wktaasc.CapegoWeb.Migration.Job.UnitTests/Wktaasc.CapegoWeb.Migration.Job.UnitTests.csproj
+  versionMajor: 1
+  versionMinor: 0
+  dockerProjectDirectory: ${{ github.workspace }}
+  imageName: 'myazfuncimage'
+  dockerfile: AzFunctionDockerTeraformPoc/Dockerfile
   
 jobs:
   CICD:
@@ -51,9 +59,15 @@ jobs:
       run: terraform apply -auto-approve
       working-directory: ./Terraform
 
-    - name: Build the Docker image
-      run: docker build -t ${{ env.CONTAINER_IMAGE }} -f Dockerfile .
-      working-directory: ./AzFunctionDockerTeraformPoc
+    - name: Create container image
+      if: ((success()) && (github.event_name != 'pull_request'))
+      working-directory: ${{ env.dockerProjectDirectory }}
+      run: |
+        docker build -t ${{ inputs.imageName }} -f ${{ inputs.dockerfile }} .
+      shell: pwsh
+    #- name: Build the Docker image
+     # run: docker build -t ${{ env.CONTAINER_IMAGE }} -f Dockerfile .
+    #  working-directory: ./AzFunctionDockerTeraformPoc
 
     - name: tag image
       run: docker tag ${{ env.CONTAINER_IMAGE }} ${{ env.CONTAINER_REGISTRY_NAME }}.azurecr.io/${{env.CONTAINER_IMAGE}}:${{ env.IMAGE_TAG }}

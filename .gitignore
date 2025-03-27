@@ -2,6 +2,4 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/AzFunctionDockerTeraformPoc/.vs/AzFunctionDockerTeraformPoc/copilot-chat/876db612/sessions
-/AzFunctionDockerTeraformPoc/.vs/AzFunctionDockerTeraformPoc/CopilotIndices/17.12.68.61481
-/AzFunctionDockerTeraformPoc/.vs/AzFunctionDockerTeraformPoc
+/.vs/AzFunctionDockerTeraformPoc

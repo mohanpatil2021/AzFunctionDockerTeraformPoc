@@ -1,0 +1,15 @@
+{
+  "profiles": {
+    "AzFunctionDockerTeraformPoc": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7111"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker",
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
+      "containerRunArguments": "--init",
+      "httpPort": 34451,
+      "useSSL": false
+    }
+  }
+}
